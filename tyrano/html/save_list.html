@@ -1,0 +1,56 @@
+<ul id="save_list_{{:page}}" class="save_list">
+  {{for array_save}}
+  <li class="save_display_area save_list_item" data-num="{{:num}}">
+    <div class="save_list_item_border_container">
+      <div class="save_list_item_scale_container">
+        <span class="save_list_item_thumb">
+          {{if img_data != ""}}
+          <img src="{{:img_data}}" />
+          <img
+            class="img_hover"
+            src="data/image/menu/{{:~root.type}}_hover.png"
+          />
+          {{/if}} {{if ~root.newest == num}}
+          <img class="img_new" src="data/image/menu/NEW.png" />
+          {{/if}}
+        </span>
+        <span class="save_list_item_area">
+          <div class="phase">
+            {{for phase_meter}}
+            <img class="phase_meter" src="data/image/ui/save.png" />
+            {{/for}} {{if phase_file != ""}}
+            <img class="phase_base" src="{{:phase_file}}" />
+            {{/if}}
+          </div>
+          <span class="save_list_item_date">{{:save_date}}</span>
+          <p class="save_list_item_subtitle {{:subtitle}}">{{:subtitleText}}</p>
+          {{if img_data == ""}}
+          <p class="save_list_item_text">{{:title}}</p>
+          {{/if}}
+        </span>
+      </div>
+    </div>
+  </li>
+  {{/for}}
+
+  <img
+    class="prev_page"
+    src="data/image/ui/prev_page.png"
+    style="left: 40px; top: 387px; position: fixed"
+  />
+  <img
+    class="next_page"
+    src="data/image/ui/next_page.png"
+    style="right: 40px; top: 387px; position: fixed"
+  />
+  <p
+    class="page_no"
+    style="
+      left: 110px;
+      bottom: 105px;
+      position: fixed;
+      font-size: 32px;
+      color: #322e4e;
+    "
+  ></p>
+</ul>

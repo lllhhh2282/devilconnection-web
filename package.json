@@ -1,0 +1,9 @@
+{
+  "name": "devil-connection-browser",
+  "version": "1.0.0",
+  "description": "DevilConnection browser port",
+  "private": true,
+  "scripts": {
+    "serve": "npx -y serve ."
+  }
+}

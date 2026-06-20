@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Loading TyranoScript</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,user-scalable=no"
+    />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link href="./tyrano/tyrano.css" rel="stylesheet" />
+    <link href="./tyrano/libs/jquery-ui/jquery-ui.css" rel="stylesheet" />
+
+    <!-- Browser API shim (replaces Electron preload) -->
+    <script src="./browser_api.js"></script>
+    
+    <!-- jQuery -->
+    <script src="./tyrano/libs/jquery-3.6.0.min.js"></script>
+    <script>
+      window.process = window.api.returnProcess()
+      window.__dirname = window.api.returnDirName()
+    </script>
+
+    <!-- jQuery Plugins -->
+    <script src="./tyrano/libs/jquery-migrate-1.4.1.js"></script>
+    <script src="./tyrano/libs/jquery-ui/jquery-ui.min.js"></script>
+    <script src="./tyrano/libs/jquery.a3d.js"></script>
+    <script src="./tyrano/libs/jsrender.min.js"></script>
+
+    <!-- SweetAlert2 -->
+    <link href="./tyrano/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <script src="./tyrano/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <!-- JSZip -->
+    <script src="./tyrano/libs/jszip.min.js"></script>
+    <style>
+      .swal2-container {
+        z-index: 2147483647 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+      }
+      .swal2-popup {
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+    </style>
+
+    <!-- 廃止予定 alertify.js -->
+    <link href="./tyrano/libs/alertify/alertify.core.css" rel="stylesheet" />
+    <link href="./tyrano/libs/alertify/alertify.default.css" rel="stylesheet" />
+    <script src="./tyrano/libs/alertify/alertify.min.js"></script>
+
+    <!-- remodal -->
+    <link href="./tyrano/libs/remodal/remodal.css" rel="stylesheet" />
+    <link
+      href="./tyrano/libs/remodal/remodal-default-theme.css"
+      rel="stylesheet"
+    />
+    <script src="./tyrano/libs/remodal/remodal.js"></script>
+
+    <!-- html2canvas -->
+    <script src="./tyrano/libs/html2canvas.js"></script>
+
+    <!-- apng.js -->
+    <script src="./tyrano/libs/blob.js"></script>
+    <script src="./tyrano/libs/apng.js"></script>
+    <script src="./tyrano/libs/apng-js.js"></script>
+    <script lang="javascript">
+      var parseAPNG = apngJs.default
+      var { isNotAPNG } = apngJs
+    </script>
+
+    <!-- KeyConfig.js -->
+    <script src="./data/system/KeyConfig.js"></script>
+
+    <!-- tyrano -->
+    <script src="./tyrano/lang.js"></script>
+    <script src="./tyrano/libs.js"></script>
+    <script src="./tyrano/tyrano.js"></script>
+    <script src="./tyrano/tyrano.base.js"></script>
+    <script src="./tyrano/plugins/kag/kag.js"></script>
+    <script src="./tyrano/plugins/kag/kag.event.js"></script>
+    <script src="./tyrano/plugins/kag/kag.key_mouse.js"></script>
+    <script src="./tyrano/plugins/kag/kag.layer.js"></script>
+    <script src="./tyrano/plugins/kag/kag.menu.js"></script>
+    <script src="./tyrano/plugins/kag/kag.parser.js"></script>
+    <script src="./tyrano/plugins/kag/kag.rider.js"></script>
+    <script src="./tyrano/plugins/kag/kag.studio.js"></script>
+    <script src="./tyrano/plugins/kag/kag.tag_audio.js"></script>
+    <script src="./tyrano/plugins/kag/kag.tag_camera.js"></script>
+    <script src="./tyrano/plugins/kag/kag.tag_ext.js"></script>
+    <script src="./tyrano/plugins/kag/kag.tag_system.js"></script>
+    <script src="./tyrano/plugins/kag/kag.tag_vchat.js"></script>
+    <script src="./tyrano/plugins/kag/kag.tag_ar.js"></script>
+    <script src="./tyrano/plugins/kag/kag.tag_three.js"></script>
+    <script src="./tyrano/plugins/kag/kag.tag.js"></script>
+
+    <!-- Others -->
+    <link href="./tyrano/libs/textillate/assets/animate.css" rel="stylesheet" />
+    <script src="./tyrano/libs/textillate/assets/jquery.lettering.js"></script>
+    <script src="./tyrano/libs/textillate/jquery.textillate.js"></script>
+    <script src="./tyrano/libs/jquery.touchSwipe.min.js"></script>
+    <script src="./tyrano/libs/howler.js"></script>
+    <script src="./tyrano/libs/jsQR.js"></script>
+    <script src="./tyrano/libs/lz-string.min.js"></script>
+
+    <!-- Electron対応 -->
+    <script src="./electron_latest.js"></script>
+  </head>
+
+  <body
+    onselectstart="return false"
+    onContextmenu="return false"
+    ontouchmove="event.preventDefault()"
+  >
+    <!-- クリックして開始（オーディオ自動再生ポリシー対策） -->
+    <div
+      id="tyrano_click_to_start"
+      style="
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 2147483647;
+        background: rgba(0, 0, 0, 0.92);
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+      "
+    >
+      <div
+        id="tyrano_click_button"
+        style="
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          max-width: 90vw;
+          max-height: 90vh;
+          padding: 36px 72px;
+          border: 3px solid rgba(255, 255, 255, 0.8);
+          border-radius: 16px;
+          background: rgba(255, 255, 255, 0.08);
+          color: #fff;
+          font-size: clamp(24px, 5vw, 48px);
+          font-family: sans-serif;
+          text-align: center;
+          line-height: 1.4;
+          box-shadow: 0 0 40px rgba(255, 136, 204, 0.3);
+          transition: all 0.25s ease;
+          box-sizing: border-box;
+          overflow: hidden;
+        "
+      >
+        <div>点击屏幕开始</div>
+        <div style="font-size: 0.45em; opacity: 0.7; margin-top: 0.5em">
+          Click to Start
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="tyrano_base"
+      class="tyrano_base"
+      style="overflow: hidden"
+      unselectable="on"
+      ondragstart="return false"
+    ></div>
+    <div
+      id="vchat_base"
+      class="vchat_base"
+      style="overflow: hidden"
+      unselectable="on"
+      ondragstart="return false"
+    ></div>
+
+    <!--  First シナリオファイルに外部ファイルを利用したい場合は、こちらにシナリオファイルのURLを指定できます-->
+    <!--
+        <input type="hidden" id="first_scenario_file" value="http://test.com/tyrano/data/scenario/first.ks">
+        -->
+
+    <!-- コンフィグ調整をindex.htmlでもできる -->
+    <!--
+        <input type="hidden" tyrano="config" key="vchat" value="true" />
+        <input type="hidden" tyrano="config" key="vchatMenuVisible" value="true" />
+        -->
+
+    <!-- モーダル用 -->
+    <div class="remodal-bg"></div>
+    <div
+      class="remodal"
+      data-remodal-id="modal"
+      data-remodal-options="hashTracking:false,closeOnEscape:false,closeOnOutsideClick:false"
+    >
+      <h1 class="remodal_title"></h1>
+      <p class="remodal_txt"></p>
+      <br />
+      <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+      <button data-remodal-action="cancel" class="remodal-cancel">
+        Cancel
+      </button>
+    </div>
+  </body>
+</html>
