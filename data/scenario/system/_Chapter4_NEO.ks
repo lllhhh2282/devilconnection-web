@@ -1,0 +1,6 @@
+[preload  storage="./data/fgimage/chara/63/3.png"  ]
+[preload  storage="./data/fgimage/chara/63/2.png"  ]
+[preload  storage="./data/fgimage/chara/63/4.png"  ]
+[preload  storage="./data/others/Yawamin.ttf"  ]
+[preload  storage="./data/fgimage/chara/63/1.png"  ]
+[return]

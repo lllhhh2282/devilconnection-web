@@ -1,0 +1,8 @@
+[macro name=fadein_window]
+  [tb_show_message_window  ]
+  [transparent_frame]
+  [anim layer="message0" time="%time|300" opacity="255"]
+  [anim name="fixlayer" time="%time|300" opacity="255"]
+  [wait time="%time|300"]
+[endmacro]
+[return]

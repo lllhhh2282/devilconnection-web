@@ -1,0 +1,7 @@
+[preload  storage="./data/bgimage/shiro.webp"  ]
+[preload  storage="./data/fgimage/chara/63/3.png"  ]
+[preload  storage="./data/fgimage/chara/63/2.png"  ]
+[preload  storage="./data/fgimage/chara/63/1.png"  ]
+[preload  storage="./data/fgimage/chara/63/4.png"  ]
+[preload  storage="./data/bgimage/kuro.webp"  ]
+[return]

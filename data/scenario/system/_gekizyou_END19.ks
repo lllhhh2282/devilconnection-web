@@ -1,0 +1,6 @@
+[preload  storage="./data/fgimage/chara/16/kupya3.png"  ]
+[preload  storage="./data/fgimage/chara/16/kupya2.png"  ]
+[preload  storage="./data/fgimage/chara/15/dagya2.png"  ]
+[preload  storage="./data/fgimage/chara/15/dagya31.png"  ]
+[preload  storage="./data/fgimage/chara/15/dagya34.png"  ]
+[return]

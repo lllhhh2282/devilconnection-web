@@ -1,0 +1,5 @@
+[preload  storage="./data/others/KaiseiDecol-Bold.ttf"  ]
+[preload  storage="./data/others/DZUYOKU.ttf"  ]
+[preload  storage="./data/others/YOWAKU.ttf"  ]
+[preload  storage="./data/others/kowai.ttf"  ]
+[return]

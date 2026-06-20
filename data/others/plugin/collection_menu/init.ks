@@ -1,0 +1,1 @@
+[loadjs storage="plugin/collection_menu/main.js" ]

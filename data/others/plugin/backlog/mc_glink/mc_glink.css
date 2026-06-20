@@ -1,0 +1,22 @@
+/* 【glinkログプラグイン】                         */
+/* by hororo http://hororo.wp.xdomain.jp/118/    */
+
+/* 名前・テキスト */
+.log_body .backlog_chara_name.glink,
+.log_body .backlog_text.glink {
+  font-weight: bold;
+}
+
+.log_body .backlog_chara_name.glink {
+  color: #cb6daf;
+}
+
+.log_body .backlog_text.glink {
+  border-bottom: 2px solid #cb6daf;
+}
+
+/* マーク */
+.log_body .backlog_chara_name.glink::after {
+  content: attr(data-mark);
+  font-weight: normal;
+}
